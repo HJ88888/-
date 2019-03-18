@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../static/js/jquery-1.11.3.js"></script>
+    <script src="../static/js/book.js"></script>
+    <link rel="stylesheet" href="../static/css/book.css" type="text/css">
+</head>
+<body>
+    <h1 id="id1">书籍推荐:
+        <a href="/index" style="padding-left:75%;text-decoration:none;">F4</a>
+    </h1>
+    <div class="books">
+        <div class="bar" style="position: relative;left: 80px;">
+            <select name="variety" id="variety">
+                <option value="文学">文学</option>
+                <option value="流行">流行</option>
+                <option value="文化">文化</option>
+                <option value="生活">生活</option>
+                <option value="经管">经管</option>
+                <option value="科技">科技</option>
+            </select>
+            <select name="book_type" id="book_type"></select>
+            <span>排序方式:
+                <a href="#">综合排序</a>
+                <a href="#">评分高低</a>
+                <a href="#">评论人数</a>
+            </span>
+        </div>
+        <div id="tb_books">
+            <table border="1px" width="90%" height="2000px" style="margin: auto;position: relative;top:20px;border-collapse:collapse;">
+                <thead>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="30%" height="10%">
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[0].url}}">
+                                        <img src="../static/images/{{books[0].book_type}}/{{books[0].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[0].r_name}}{% if books[0].t_name %}:{{books[0].t_name}}{% endif %}</li>
+                                    <li>{{books[0].info}}</li>
+                                    <li style="">评分:{{books[0].score}}</li>
+                                    <li><span>{{books[0].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[0].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td width="30%" height="10%">
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[1].url}}">
+                                        <img src="../static/images/{{books[1].book_type}}/{{books[1].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[1].r_name}}{% if books[1].t_name %}:{{books[1].t_name}}{% endif %}</li>
+                                    <li>{{books[1].info}}</li>
+                                    <li>评分:{{books[1].score}}</li>
+                                    <li><span>{{books[1].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[1].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td width="30%" height="10%">
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[2].url}}">
+                                        <img src="../static/images/{{books[2].book_type}}/{{books[2].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[2].r_name}}{% if books[2].t_name %}:{{books[2].t_name}}{% endif %}</li>
+                                    <li>{{books[2].info}}</li>
+                                    <li>评分:{{books[2].score}}</li>
+                                    <li><span>{{books[2].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[2].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row2">
+                        <td>
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[3].url}}">
+                                        <img src="../static/images/{{books[3].book_type}}/{{books[3].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[3].r_name}}{% if books[3].t_name %}:{{books[3].t_name}}{% endif %}</li>
+                                    <li>{{books[3].info}}</li>
+                                    <li>评分:{{books[3].score}}</li>
+                                    <li><span>{{books[3].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[3].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[4].url}}">
+                                        <img src="../static/images/{{books[4].book_type}}/{{books[4].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[4].r_name}}{% if books[4].t_name %}:{{books[4].t_name}}{% endif %}</li>
+                                    <li>{{books[4].info}}</li>
+                                    <li>评分:{{books[4].score}}</li>
+                                    <li><span>{{books[4].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[4].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[5].url}}">
+                                        <img src="../static/images/{{books[5].book_type}}/{{books[5].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[5].r_name}}{% if books[5].t_name %}:{{books[5].t_name}}{% endif %}</li>
+                                    <li>{{books[5].info}}</li>
+                                    <li>评分:{{books[5].score}}</li>
+                                    <li><span>{{books[5].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[5].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row3">
+                        <td>
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[6].url}}">
+                                        <img src="../static/images/{{books[6].book_type}}/{{books[6].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[6].r_name}}{% if books[6].t_name %}:{{books[6].t_name}}{% endif %}</li>
+                                    <li>{{books[6].info}}</li>
+                                    <li>评分:{{books[6].score}}</li>
+                                    <li><span>{{books[6].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[6].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[7].url}}">
+                                        <img src="../static/images/{{books[7].book_type}}/{{books[7].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[7].r_name}}{% if books[7].t_name %}:{{books[7].t_name}}{% endif %}</li>
+                                    <li>{{books[7].info}}</li>
+                                    <li>评分:{{books[7].score}}</li>
+                                    <li><span>{{books[7].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[7].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[8].url}}">
+                                        <img src="../static/images/{{books[8].book_type}}/{{books[8].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[8].r_name}}{% if books[8].t_name %}:{{books[8].t_name}}{% endif %}</li>
+                                    <li>{{books[8].info}}</li>
+                                    <li>评分:{{books[8].score}}</li>
+                                    <li><span>{{books[8].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[8].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row4">
+                        <td>
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[9].url}}">
+                                        <img src="../static/images/{{books[9].book_type}}/{{books[9].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[9].r_name}}{% if books[9].t_name %}:{{books[9].t_name}}{% endif %}</li>
+                                    <li>{{books[9].info}}</li>
+                                    <li>评分:{{books[9].score}}</li>
+                                    <li><span>{{books[9].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[9].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[10].url}}">
+                                        <img src="../static/images/{{books[10].book_type}}/{{books[10].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[10].r_name}}{% if books[10].t_name %}:{{books[10].t_name}}{% endif %}</li>
+                                    <li>{{books[10].info}}</li>
+                                    <li>评分:{{books[10].score}}</li>
+                                    <li><span>{{books[10].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[10].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[11].url}}">
+                                        <img src="../static/images/{{books[11].book_type}}/{{books[11].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[11].r_name}}{% if books[10].t_name %}:{{books[11].t_name}}{% endif %}</li>
+                                    <li>{{books[11].info}}</li>
+                                    <li>评分:{{books[11].score}}</li>
+                                    <li><span>{{books[11].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[11].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row5">
+                        <td>
+                            <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[12].url}}">
+                                        <img src="../static/images/{{books[12].book_type}}/{{books[12].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[12].r_name}}{% if books[12].t_name %}:{{books[12].t_name}}{% endif %}</li>
+                                    <li>{{books[12].info}}</li>
+                                    <li>评分:{{books[12].score}}</li>
+                                    <li><span>{{books[12].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[12].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                             <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[13].url}}">
+                                        <img src="../static/images/{{books[13].book_type}}/{{books[13].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[13].r_name}}{% if books[13].t_name %}:{{books[13].t_name}}{% endif %}</li>
+                                    <li>{{books[13].info}}</li>
+                                    <li>评分:{{books[13].score}}</li>
+                                    <li><span>{{books[13].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[13].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[14].url}}">
+                                        <img src="../static/images/{{books[14].book_type}}/{{books[14].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[14].r_name}}{% if books[14].t_name %}:{{books[14].t_name}}{% endif %}</li>
+                                    <li>{{books[14].info}}</li>
+                                    <li>评分:{{books[14].score}}</li>
+                                    <li><span>{{books[14].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[14].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row6">
+                        <td>
+                             <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[15].url}}">
+                                        <img src="../static/images/{{books[15].book_type}}/{{books[15].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[15].r_name}}{% if books[15].t_name %}:{{books[15].t_name}}{% endif %}</li>
+                                    <li>{{books[15].info}}</li>
+                                    <li>评分:{{books[15].score}}</li>
+                                    <li><span>{{books[15].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[15].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                             <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[16].url}}">
+                                        <img src="../static/images/{{books[16].book_type}}/{{books[16].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[16].r_name}}{% if books[16].t_name %}:{{books[16].t_name}}{% endif %}</li>
+                                    <li>{{books[16].info}}</li>
+                                    <li>评分:{{books[16].score}}</li>
+                                    <li><span>{{books[16].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[16].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                             <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[17].url}}">
+                                        <img src="../static/images/{{books[17].book_type}}/{{books[17].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[17].r_name}}{% if books[17].t_name %}:{{books[17].t_name}}{% endif %}</li>
+                                    <li>{{books[17].info}}</li>
+                                    <li>评分:{{books[17].score}}</li>
+                                    <li><span>{{books[17].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[17].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row7">
+                        <td>
+                             <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[18].url}}">
+                                        <img src="../static/images/{{books[18].book_type}}/{{books[18].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[18].r_name}}{% if books[18].t_name %}:{{books[18].t_name}}{% endif %}</li>
+                                    <li>{{books[18].info}}</li>
+                                    <li>评分:{{books[18].score}}</li>
+                                    <li><span>{{books[18].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[18].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[19].url}}">
+                                        <img src="../static/images/{{books[19].book_type}}/{{books[19].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[19].r_name}}{% if books[19].t_name %}:{{books[19].t_name}}{% endif %}</li>
+                                    <li>{{books[19].info}}</li>
+                                    <li>评分:{{books[19].score}}</li>
+                                    <li><span>{{books[19].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[19].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                             <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[20].url}}">
+                                        <img src="../static/images/{{books[20].book_type}}/{{books[20].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[20].r_name}}{% if books[20].t_name %}:{{books[20].t_name}}{% endif %}</li>
+                                    <li>{{books[20].info}}</li>
+                                    <li>评分:{{books[20].score}}</li>
+                                    <li><span>{{books[20].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[20].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row8">
+                        <td>
+                             <div id="info">
+                                <div class="show_img">
+                                    <a href="{{books[21].url}}">
+                                        <img src="../static/images/{{books[21].book_type}}/{{books[21].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[21].r_name}}{% if books[21].t_name %}:{{books[21].t_name}}{% endif %}</li>
+                                    <li>{{books[21].info}}</li>
+                                    <li>评分:{{books[21].score}}</li>
+                                    <li><span>{{books[21].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[21].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                             <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[22].url}}">
+                                        <img src="../static/images/{{books[22].book_type}}/{{books[22].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[22].r_name}}{% if books[22].t_name %}:{{books[22].t_name}}{% endif %}</li>
+                                    <li>{{books[22].info}}</li>
+                                    <li>评分:{{books[22].score}}</li>
+                                    <li><span>{{books[22].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[22].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                             <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[23].url}}">
+                                        <img src="../static/images/{{books[23].book_type}}/{{books[23].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[23].r_name}}{% if books[23].t_name %}:{{books[23].t_name}}{% endif %}</li>
+                                    <li>{{books[23].info}}</li>
+                                    <li>评分:{{books[23].score}}</li>
+                                    <li><span>{{books[23].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[23].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row9">
+                        <td>
+                             <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[24].url}}">
+                                        <img src="../static/images/{{books[24].book_type}}/{{books[24].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[24].r_name}}{% if books[24].t_name %}:{{books[24].t_name}}{% endif %}</li>
+                                    <li>{{books[24].info}}</li>
+                                    <li>评分:{{books[24].score}}</li>
+                                    <li><span>{{books[24].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[24].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[25].url}}">
+                                        <img src="../static/images/{{books[25].book_type}}/{{books[25].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[25].r_name}}{% if books[25].t_name %}:{{books[25].t_name}}{% endif %}</li>
+                                    <li>{{books[25].info}}</li>
+                                    <li>评分:{{books[25].score}}</li>
+                                    <li><span>{{books[25].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[25].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                             <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[26].url}}">
+                                        <img src="../static/images/{{books[26].book_type}}/{{books[26].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[26].r_name}}{% if books[26].t_name %}:{{books[26].t_name}}{% endif %}</li>
+                                    <li>{{books[26].info}}</li>
+                                    <li>评分:{{books[26].score}}</li>
+                                    <li><span>{{books[26].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[26].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="row10">
+                        <td>
+                             <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[27].url}}">
+                                        <img src="../static/images/{{books[27].book_type}}/{{books[27].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[27].r_name}}{% if books[27].t_name %}:{{books[27].t_name}}{% endif %}</li>
+                                    <li>{{books[27].info}}</li>
+                                    <li>评分:{{books[27].score}}</li>
+                                    <li><span>{{books[27].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[27].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[28].url}}">
+                                        <img src="../static/images/{{books[28].book_type}}/{{books[28].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[28].r_name}}{% if books[28].t_name %}:{{books[28].t_name}}{% endif %}</li>
+                                    <li>{{books[28].info}}</li>
+                                    <li>评分:{{books[28].score}}</li>
+                                    <li><span>{{books[28].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[28].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div id="info">
+                                 <div class="show_img">
+                                    <a href="{{books[29].url}}">
+                                        <img src="../static/images/{{books[29].book_type}}/{{books[29].img_name}}">
+                                    </a>
+                                </div>
+                                <ul class="show_info">
+                                    <li>{{books[29].r_name}}{% if books[29].t_name %}:{{books[29].t_name}}{% endif %}</li>
+                                    <li>{{books[29].info}}</li>
+                                    <li>评分:{{books[29].score}}</li>
+                                    <li><span>{{books[29].nums}}</span>人评价</li>
+                                    <li>&lt;描述&gt;<label>{{books[29].ds}}</label></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <tfoot>
+                <tr>
+                <td colspan="3" align="center" style="font-size:20px;">
+                </td>
+                </tr>
+            </tfoot>
+        </div>
+    </div>
+    <div style="width:150px;margin: auto;position: relative;top:30px;color:#000000;">
+        <span id="previous">&lt;上一页</span>
+        <a href="" class="book_N">1</a>
+        <span id="nextpapg">下一页&gt;</span>
+    </div>
+    <input type="hidden" name="book_T" class="book_T" value="D">
+</body>
+</html>
